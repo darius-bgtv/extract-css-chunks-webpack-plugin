@@ -333,7 +333,7 @@ class ExtractCssChunksPlugin {
               Template.indent([
                 'promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {',
                 Template.indent([
-                  `var href = ${linkHrefPath};`,
+                  `var href = document.dir === 'rtl' ? ${linkHrefPath.replace('.css', '.rtl.css')} : ${linkHrefPath};`,
                   `var fullhref = ${mainTemplate.requireFn}.p + href;`,
                   'var existingLinkTags = document.getElementsByTagName("link");',
                   'for(var i = 0; i < existingLinkTags.length; i++) {',
